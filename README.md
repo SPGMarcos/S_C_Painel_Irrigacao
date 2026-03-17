@@ -42,29 +42,30 @@ O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (man
 
 - Fluxo principal
 
-Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
+- Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
 
 - Modo com Home Assistant
 
-Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
+- Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
 
 
 
 ## 🔌 Hardware Utilizado
 
-ESP8266 (NodeMCU / Wemos)
+- ESP8266 (NodeMCU / Wemos)
 
-Módulo Relé 2 canais (protocolo serial 0xA0)
+- Módulo Relé 2 canais (protocolo serial 0xA0)
 
-Fonte 5V estabilizada
+- Fonte 5V estabilizada
 
-Válvulas solenóide 127V/220V conforme instalação
+- Válvulas solenóide 127V/220V conforme instalação
 
-Painel físico para montagem e proteção elétrica
+- Painel físico para montagem e proteção elétrica
 
 
 
 ## ⚙️ Principais Funcionalidades
+
 Controle Manual
 Acionamento individual das válvulas via web ou MQTT.
 
@@ -108,17 +109,19 @@ Permite reconhecimento automático, sincronização de estado e controle bidirec
 
 
 ## 🌐 Interface Web
-Dark theme moderno e leve (PROGMEM para economia de RAM).
 
-Componentes: switch animado, seleção de horários, controle de ciclos, página de configurações avançadas e factory reset.
+- Dark theme moderno e leve (PROGMEM para economia de RAM).
 
-Auto refresh a cada 5 segundos; comunicação via Fetch API e JSON.
+- Componentes: switch animado, seleção de horários, controle de ciclos, página de configurações avançadas e factory reset.
 
-Design responsivo para celular e desktop.
+- Auto refresh a cada 5 segundos; comunicação via Fetch API e JSON.
+
+- Design responsivo para celular e desktop.
 
 
 
 ## 🔄 Protocolo de Comunicação com Placa de Relés
+
 Formato simples de 4 bytes: [0xA0][Relay][State][Checksum]
 
 Exemplo de envio:
@@ -130,50 +133,54 @@ Checksum básico para integridade e reenvio em caso de falha.
 
 
 ## 🛡️ Mecanismos de Segurança e Estabilidade
-Delay entre acionamentos para reduzir picos de corrente.
 
-Controle por estado interno (ex.: isIrrigating) para evitar comandos conflitantes.
+- Delay entre acionamentos para reduzir picos de corrente.
 
-Reconexão automática MQTT e watchdog implícito pelo loop principal.
+- Controle por estado interno (ex.: isIrrigating) para evitar comandos conflitantes.
 
-Persistência para recuperação após queda de energia.
+- Reconexão automática MQTT e watchdog implícito pelo loop principal.
 
-Factory reset via interface para recuperação rápida.
+- Persistência para recuperação após queda de energia.
+
+- Factory reset via interface para recuperação rápida.
 
 
 
 ## 📡 mDNS
-Acesso por nome local: http://esp_irrigacao.local sem necessidade de IP fixo.
 
-Logs básicos e indicadores de conectividade disponíveis na interface.
+- Acesso por nome local: http://esp_irrigacao.local sem necessidade de IP fixo.
+
+- Logs básicos e indicadores de conectividade disponíveis na interface.
 
 
 
 ## 📈 Escalabilidade
+
 Planejado para expansão sem grandes mudanças de arquitetura:
 
-Mais canais de válvula e controle por ciclo individual.
+- Mais canais de válvula e controle por ciclo individual.
 
-Sensores de umidade do solo para irrigação por demanda.
+- Sensores de umidade do solo para irrigação por demanda.
 
-Comunicação LoRa para instalações remotas.
+- Comunicação LoRa para instalações remotas.
 
-Dashboard avançado e integração com previsões climáticas.
+- Dashboard avançado e integração com previsões climáticas.
 
-Perfis sazonais e regras por estação do ano.
+- Perfis sazonais e regras por estação do ano.
 
 
 
 ## 📊 Diferenciais Técnicos
-Auto discovery MQTT para integração imediata com Home Assistant.
 
-Arquitetura híbrida (local + HA) que prioriza operação offline.
+- Auto discovery MQTT para integração imediata com Home Assistant.
 
-Interface responsiva embarcada; persistência local com LittleFS.
+- Arquitetura híbrida (local + HA) que prioriza operação offline.
 
-Provisionamento automático via WiFiManager.
+- Interface responsiva embarcada; persistência local com LittleFS.
 
-Código modular e fácil de manter.
+- Provisionamento automático via WiFiManager.
+
+- Código modular e fácil de manter.
 
 
 
