@@ -66,45 +66,45 @@ O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (man
 
 ## ⚙️ Principais Funcionalidades
 
-Controle Manual
+- Controle Manual
 Acionamento individual das válvulas via web ou MQTT.
 
-Atualização de estado em tempo real e sincronização bidirecional com Home Assistant.
+- Atualização de estado em tempo real e sincronização bidirecional com Home Assistant.
 
-Automação por Horário
+- Automação por Horário
 Até 3 ciclos diários por válvula.
 
-Horários configuráveis pela interface; comparação por minuto para precisão.
+- Horários configuráveis pela interface; comparação por minuto para precisão.
 
-Ativação simultânea possível; delay de 1 segundo entre acionamentos para proteção elétrica.
+- Ativação simultânea possível; delay de 1 segundo entre acionamentos para proteção elétrica.
 
-Lógica de cálculo do minuto do dia usada na rotina:
+- Lógica de cálculo do minuto do dia usada na rotina:
 
-cpp
+- cpp
 int cur = timeClient.getHours() * 60 + timeClient.getMinutes();
 Sincronização de Horário NTP
 pool.ntp.org como servidor padrão.
 
-Atualização periódica; fuso configurável (ex.: -10800 para Brasil).
+- Atualização periódica; fuso configurável (ex.: -10800 para Brasil).
 
-Persistência com LittleFS
+- Persistência com LittleFS
 Armazena horários, ciclos ativos, estado de automação e configuração MQTT em /config.txt.
 
-Garante restauração automática após reboot.
+- Garante restauração automática após reboot.
 
-Provisionamento Wi‑Fi
+- Provisionamento Wi‑Fi
 WiFiManager: cria rede ESP_Irrigacao se não houver credenciais salvas.
 
-Portal de configuração intuitivo, sem necessidade de hardcode.
+- Portal de configuração intuitivo, sem necessidade de hardcode.
 
-Integração com Home Assistant via MQTT Discovery
+- Integração com Home Assistant via MQTT Discovery
 Cria automaticamente duas entidades: Válvula 1 e Válvula 2.
 
-Tópicos padrão: irrigacao_esp/v1/state; irrigacao_esp/v1/set; irrigacao_esp/v2/state; irrigacao_esp/v2/set
+- Tópicos padrão: irrigacao_esp/v1/state; irrigacao_esp/v1/set; irrigacao_esp/v2/state; irrigacao_esp/v2/set
 
-Mensagens de auto discovery em: homeassistant/switch/irrigacao_esp_v1/config; homeassistant/switch/irrigacao_esp_v2/config
+- Mensagens de auto discovery em: homeassistant/switch/irrigacao_esp_v1/config; homeassistant/switch/irrigacao_esp_v2/config
 
-Permite reconhecimento automático, sincronização de estado e controle bidirecional.
+- Permite reconhecimento automático, sincronização de estado e controle bidirecional.
 
 
 
