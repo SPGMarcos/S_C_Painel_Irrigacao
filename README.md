@@ -2,6 +2,8 @@
 ESP8266 + MQTT + Home Assistant + Interface Web
 Painel compacto para controle de 2 válvulas solenóide, com automação por horário, operação 100% local e integração nativa com Home Assistant via MQTT Discovery.
 
+
+
 ## 📌 Visão Geral
 Projeto de controlador de irrigação embarcado que oferece:
 
@@ -19,6 +21,8 @@ Sincronização de horário via NTP para execução precisa.
 
 O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (manual + automático + HA).
 
+
+
 ## 🎯 Objetivos do Projeto
 Independência de nuvem: operação sem dependência externa.
 
@@ -30,12 +34,16 @@ Integração com sistemas de automação (MQTT / Home Assistant).
 
 Design modular para facilitar expansão futura.
 
+
+
 ## 🧠 Arquitetura do Sistema
 Fluxo principal
 Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
 
 Modo com Home Assistant
 Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
+
+
 
 ## 🔌 Hardware Utilizado
 ESP8266 (NodeMCU / Wemos)
@@ -47,6 +55,8 @@ Fonte 5V estabilizada
 Válvulas solenóide 127V/220V conforme instalação
 
 Painel físico para montagem e proteção elétrica
+
+
 
 ## ⚙️ Principais Funcionalidades
 Controle Manual
@@ -89,6 +99,8 @@ Mensagens de auto discovery em: homeassistant/switch/irrigacao_esp_v1/config; ho
 
 Permite reconhecimento automático, sincronização de estado e controle bidirecional.
 
+
+
 ## 🌐 Interface Web
 Dark theme moderno e leve (PROGMEM para economia de RAM).
 
@@ -98,6 +110,8 @@ Auto refresh a cada 5 segundos; comunicação via Fetch API e JSON.
 
 Design responsivo para celular e desktop.
 
+
+
 ## 🔄 Protocolo de Comunicação com Placa de Relés
 Formato simples de 4 bytes: [0xA0][Relay][State][Checksum]
 
@@ -106,6 +120,8 @@ Exemplo de envio:
 cpp
 byte cmd[4] = {0xA0, relay, state, checksum};
 Checksum básico para integridade e reenvio em caso de falha.
+
+
 
 ## 🛡️ Mecanismos de Segurança e Estabilidade
 Delay entre acionamentos para reduzir picos de corrente.
@@ -118,10 +134,14 @@ Persistência para recuperação após queda de energia.
 
 Factory reset via interface para recuperação rápida.
 
+
+
 ## 📡 mDNS
 Acesso por nome local: http://esp_irrigacao.local sem necessidade de IP fixo.
 
 Logs básicos e indicadores de conectividade disponíveis na interface.
+
+
 
 ## 📈 Escalabilidade
 Planejado para expansão sem grandes mudanças de arquitetura:
@@ -136,6 +156,8 @@ Dashboard avançado e integração com previsões climáticas.
 
 Perfis sazonais e regras por estação do ano.
 
+
+
 ## 📊 Diferenciais Técnicos
 Auto discovery MQTT para integração imediata com Home Assistant.
 
@@ -147,7 +169,11 @@ Provisionamento automático via WiFiManager.
 
 Código modular e fácil de manter.
 
+
+
 ##👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda  
+
 IoT Developer | Automação Residencial e Agrícola
+
 Belo Horizonte - MG
