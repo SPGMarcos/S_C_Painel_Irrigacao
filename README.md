@@ -1,8 +1,8 @@
-#🌱 Smart Irrigation Panel
+# 🌱 Smart Irrigation Panel
 ESP8266 + MQTT + Home Assistant + Web Interface
 Painel inteligente para controle de 2 válvulas solenóide com automação por horário e integração nativa com Home Assistant.
 
-##📌 Overview
+## 📌 Overview
 Este projeto consiste em um painel de irrigação inteligente baseado em ESP8266, capaz de:
 Controlar 2 válvulas solenóide independentes
 
@@ -40,7 +40,7 @@ Em modo híbrido (manual + automático + HA)
 
 
 
-##🎯 Objetivo do Projeto
+## 🎯 Objetivo do Projeto
 Desenvolver um controlador de irrigação:
 Independente de nuvem
 
@@ -61,7 +61,7 @@ Modular e escalável
 
 
 
-##🧠 Arquitetura do Sistema
+## 🧠 Arquitetura do Sistema
 Usuário
   ↓
 Interface Web (ESP8266)
@@ -85,7 +85,7 @@ Home Assistant
 
 
 
-##🔌 Hardware Utilizado
+## 🔌 Hardware Utilizado
 ESP8266
 
 
@@ -102,7 +102,7 @@ Painel físico para instalação
 
 
 
-##⚙️ Principais Funcionalidades
+## ⚙️ Principais Funcionalidades
 🔹 1. Controle Manual
 Acionamento individual de cada válvula
 
@@ -202,7 +202,7 @@ Controle bidirecional
 
 
 
-##🌐 Interface Web
+## 🌐 Interface Web
 Interface moderna estilo dark theme com:
 Switch animado
 
@@ -243,14 +243,14 @@ PROGMEM para economia de RAM
 
 
 
-##🔄 Protocolo de Comunicação com Relé
+## 🔄 Protocolo de Comunicação com Relé
 Formato enviado via Serial:
 [A0][Relay][State][Checksum]
 Exemplo:
 byte cmd[4] = {0xA0, relay, state, checksum};
 Garante integridade simples da mensagem.
 
-##🛡️ Mecanismos de Segurança e Estabilidade
+## 🛡️ Mecanismos de Segurança e Estabilidade
 Delay entre acionamento das válvulas
 
 
@@ -270,11 +270,11 @@ Watchdog natural do loop
 
 
 
-##📡 mDNS
+## 📡 mDNS
 Permite acesso via:
 http://esp_irrigacao.local
 Sem necessidade de IP fixo.
-##📈 Escalabilidade
+## 📈 Escalabilidade
 O sistema foi desenvolvido para permitir expansão futura:
 Controle individual por ciclo
 
@@ -294,7 +294,7 @@ Integração com clima
 Controle por estação do ano
 
 
-##📊 Diferenciais Técnicos
+## 📊 Diferenciais Técnicos
 ✔ Integração MQTT automática
  ✔ Arquitetura híbrida (local + HA)
  ✔ Interface responsiva embarcada
@@ -303,7 +303,8 @@ Controle por estação do ano
  ✔ Provisionamento inteligente
  ✔ Código modular
 
-##👨‍💻 Autor
+## 👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda
  IoT Developer | Automação Residencial e Agrícola
  Belo Horizonte - MG
+
