@@ -123,9 +123,7 @@ Cria automaticamente duas entidades: Válvula 1 e Válvula 2.
 ## 🔄 Protocolo de Comunicação com Placa de Relés
 
 Formato simples de 4 bytes: [0xA0][Relay][State][Checksum]
-
 Exemplo de envio:
-
 cpp
 byte cmd[4] = {0xA0, relay, state, checksum};
 Checksum básico para integridade e reenvio em caso de falha.
