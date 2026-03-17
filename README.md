@@ -1,313 +1,153 @@
-# 🌱 Smart Irrigation Panel
-ESP8266 + MQTT + Home Assistant + Web Interface
-Painel inteligente para controle de 2 válvulas solenóide com automação por horário e integração nativa com Home Assistant.
+# 🌱 Painel de Irrigação Inteligente
+ESP8266 + MQTT + Home Assistant + Interface Web
+Painel compacto para controle de 2 válvulas solenóide, com automação por horário, operação 100% local e integração nativa com Home Assistant via MQTT Discovery.
 
+## 📌 Visão Geral
+Projeto de controlador de irrigação embarcado que oferece:
 
+Controle de 2 válvulas de forma independente.
 
-## 📌 Overview
-Este projeto consiste em um painel de irrigação inteligente baseado em ESP8266, capaz de:
-Controlar 2 válvulas solenóide independentes
+Automação por horário com até 3 ciclos diários.
 
+Integração automática com Home Assistant via MQTT Discovery.
 
-Executar automação por horário embarcada
+Interface web responsiva hospedada no próprio ESP8266.
 
+Persistência local das configurações com LittleFS.
 
-Integrar automaticamente com Home Assistant via MQTT Discovery
+Sincronização de horário via NTP para execução precisa.
 
+O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (manual + automático + HA).
 
-Oferecer interface web responsiva
+## 🎯 Objetivos do Projeto
+Independência de nuvem: operação sem dependência externa.
 
+Configuração via navegador simples e rápida.
 
-Armazenar configurações localmente
+Persistência após reinicialização e proteção contra perda de energia.
 
+Integração com sistemas de automação (MQTT / Home Assistant).
 
-Sincronizar horário via NTP
-
-
-Operar de forma autônoma ou integrada ao HA
-
-
-O sistema pode funcionar:
-100% local (apenas interface web)
-
-
-Integrado ao Home Assistant
-
-
-Em modo híbrido (manual + automático + HA)
-
-
-
-## 🎯 Objetivo do Projeto
-Desenvolver um controlador de irrigação:
-Independente de nuvem
-
-
-Configurável via navegador
-
-
-Persistente após reinicialização
-
-
-Integrável a sistemas de automação
-
-
-Seguro contra perda de energia
-
-
-Modular e escalável
-
-
+Design modular para facilitar expansão futura.
 
 ## 🧠 Arquitetura do Sistema
-Usuário
-  ↓
-Interface Web (ESP8266)
-  ↓
-Servidor HTTP interno
-  ↓
-Lógica embarcada
-  ↓
-Relés (Válvula 1 e 2)
-Modo com Home Assistant:
-Home Assistant
-      ↓
-    MQTT Broker
-      ↓
-    ESP8266
-      ↓
-  Relé Board Serial
-      ↓
- Válvulas Solenóide
+Fluxo principal
+Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
 
-
+Modo com Home Assistant
+Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
 
 ## 🔌 Hardware Utilizado
-ESP8266
+ESP8266 (NodeMCU / Wemos)
 
-
-Módulo Relé 2 canais (com protocolo serial 0xA0)
-
+Módulo Relé 2 canais (protocolo serial 0xA0)
 
 Fonte 5V estabilizada
 
+Válvulas solenóide 127V/220V conforme instalação
 
-Válvulas solenóide 127V/220V
-
-
-Painel físico para instalação
-
-
+Painel físico para montagem e proteção elétrica
 
 ## ⚙️ Principais Funcionalidades
-🔹 1. Controle Manual
-Acionamento individual de cada válvula
+Controle Manual
+Acionamento individual das válvulas via web ou MQTT.
 
+Atualização de estado em tempo real e sincronização bidirecional com Home Assistant.
 
-Atualização em tempo real
+Automação por Horário
+Até 3 ciclos diários por válvula.
 
+Horários configuráveis pela interface; comparação por minuto para precisão.
 
-Sincronização MQTT
+Ativação simultânea possível; delay de 1 segundo entre acionamentos para proteção elétrica.
 
+Lógica de cálculo do minuto do dia usada na rotina:
 
-
-🔹 2. Automação por Horário
-Até 3 ciclos diários
-
-
-Horário configurável via interface
-
-
-Comparação por minuto atual
-
-
-Ativação simultânea das duas válvulas
-
-
-Delay de 1 segundo entre acionamentos (proteção elétrica)
-
-
-Lógica:
+cpp
 int cur = timeClient.getHours() * 60 + timeClient.getMinutes();
-Evita dependência externa para temporização.
+Sincronização de Horário NTP
+pool.ntp.org como servidor padrão.
 
-🔹 3. NTP Time Sync
-Sincronização com pool.ntp.org
+Atualização periódica; fuso configurável (ex.: -10800 para Brasil).
 
+Persistência com LittleFS
+Armazena horários, ciclos ativos, estado de automação e configuração MQTT em /config.txt.
 
-Atualização a cada 60 segundos
+Garante restauração automática após reboot.
 
+Provisionamento Wi‑Fi
+WiFiManager: cria rede ESP_Irrigacao se não houver credenciais salvas.
 
-Fuso configurado (-10800 para Brasil)
+Portal de configuração intuitivo, sem necessidade de hardcode.
 
+Integração com Home Assistant via MQTT Discovery
+Cria automaticamente duas entidades: Válvula 1 e Válvula 2.
 
+Tópicos padrão: irrigacao_esp/v1/state; irrigacao_esp/v1/set; irrigacao_esp/v2/state; irrigacao_esp/v2/set
 
-🔹 4. Persistência com LittleFS
-Armazena:
-Horários
+Mensagens de auto discovery em: homeassistant/switch/irrigacao_esp_v1/config; homeassistant/switch/irrigacao_esp_v2/config
 
-
-Ciclos ativos
-
-
-Estado de automação
-
-
-Configuração MQTT
-
-
-Arquivo salvo em:
-/config.txt
-Isso garante que o sistema reinicie com a última configuração válida.
-
-🔹 5. WiFiManager
-Provisionamento automático
-
-
-Cria rede "ESP_Irrigacao" se não houver Wi-Fi salvo
-
-
-Portal de configuração intuitivo
-
-
-Elimina necessidade de hardcoding de rede.
-
-
-🔹 6. Integração com Home Assistant (MQTT Discovery)
-O sistema cria automaticamente 2 entidades:
-Válvula 1
-Válvula 2
-Tópicos:
-irrigacao_esp/v1/state
-irrigacao_esp/v1/set
-irrigacao_esp/v2/state
-irrigacao_esp/v2/set
-Auto Discovery:
-homeassistant/switch/irrigacao_esp_v1/config
-homeassistant/switch/irrigacao_esp_v2/config
-Isso permite:
-Reconhecimento automático
-
-
-Sincronização de estado
-
-
-Controle bidirecional
-
-
+Permite reconhecimento automático, sincronização de estado e controle bidirecional.
 
 ## 🌐 Interface Web
-Interface moderna estilo dark theme com:
-Switch animado
+Dark theme moderno e leve (PROGMEM para economia de RAM).
 
+Componentes: switch animado, seleção de horários, controle de ciclos, página de configurações avançadas e factory reset.
 
-Controle de ciclos
+Auto refresh a cada 5 segundos; comunicação via Fetch API e JSON.
 
+Design responsivo para celular e desktop.
 
-Seleção de horários
+## 🔄 Protocolo de Comunicação com Placa de Relés
+Formato simples de 4 bytes: [0xA0][Relay][State][Checksum]
 
+Exemplo de envio:
 
-Auto refresh a cada 5 segundos
-
-
-Página de configurações avançadas
-
-
-Factory reset
-
-
-Tecnologias usadas:
-HTML5
-
-
-CSS customizado
-
-
-Fetch API
-
-
-JSON
-
-
-JavaScript dinâmico
-
-
-PROGMEM para economia de RAM
-
-
-
-## 🔄 Protocolo de Comunicação com Relé
-Formato enviado via Serial:
-[A0][Relay][State][Checksum]
-Exemplo:
+cpp
 byte cmd[4] = {0xA0, relay, state, checksum};
-Garante integridade simples da mensagem.
-
-
+Checksum básico para integridade e reenvio em caso de falha.
 
 ## 🛡️ Mecanismos de Segurança e Estabilidade
-Delay entre acionamento das válvulas
+Delay entre acionamentos para reduzir picos de corrente.
 
+Controle por estado interno (ex.: isIrrigating) para evitar comandos conflitantes.
 
-Controle por estado interno (isIrrigating)
+Reconexão automática MQTT e watchdog implícito pelo loop principal.
 
+Persistência para recuperação após queda de energia.
 
-Reconexão automática MQTT
-
-
-Persistência em caso de queda de energia
-
-
-Factory Reset via web
-
-
-Watchdog natural do loop
-
-
+Factory reset via interface para recuperação rápida.
 
 ## 📡 mDNS
-Permite acesso via:
-http://esp_irrigacao.local
-Sem necessidade de IP fixo.
+Acesso por nome local: http://esp_irrigacao.local sem necessidade de IP fixo.
 
-
+Logs básicos e indicadores de conectividade disponíveis na interface.
 
 ## 📈 Escalabilidade
-O sistema foi desenvolvido para permitir expansão futura:
-Controle individual por ciclo
+Planejado para expansão sem grandes mudanças de arquitetura:
 
+Mais canais de válvula e controle por ciclo individual.
 
-Sensores de umidade do solo
+Sensores de umidade do solo para irrigação por demanda.
 
+Comunicação LoRa para instalações remotas.
 
-Controle remoto via LoRa
+Dashboard avançado e integração com previsões climáticas.
 
-
-Dashboard avançado
-
-
-Integração com clima
-
-
-Controle por estação do ano
-
-
+Perfis sazonais e regras por estação do ano.
 
 ## 📊 Diferenciais Técnicos
-✔ Integração MQTT automática
- ✔ Arquitetura híbrida (local + HA)
- ✔ Interface responsiva embarcada
- ✔ Sistema autônomo
- ✔ Persistência embarcada
- ✔ Provisionamento inteligente
- ✔ Código modular
+Auto discovery MQTT para integração imediata com Home Assistant.
 
+Arquitetura híbrida (local + HA) que prioriza operação offline.
 
+Interface responsiva embarcada; persistência local com LittleFS.
 
-## 👨‍💻 Autor
-Marcos Gabriel Ferreira Miranda
+Provisionamento automático via WiFiManager.
 
+Código modular e fácil de manter.
+
+##👨‍💻 Autor
+Marcos Gabriel Ferreira Miranda  
 IoT Developer | Automação Residencial e Agrícola
-
 Belo Horizonte - MG
-
