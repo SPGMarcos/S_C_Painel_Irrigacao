@@ -1,4 +1,5 @@
 # 🌱 Painel de Irrigação Inteligente
+
 ESP8266 + MQTT + Home Assistant + Interface Web
 Painel compacto para controle de 2 válvulas solenóide, com automação por horário, operação 100% local e integração nativa com Home Assistant via MQTT Discovery.
 
@@ -7,45 +8,50 @@ Painel compacto para controle de 2 válvulas solenóide, com automação por hor
 ## 📌 Visão Geral
 Projeto de controlador de irrigação embarcado que oferece:
 
-Controle de 2 válvulas de forma independente.
+- Controle de 2 válvulas de forma independente.
 
-Automação por horário com até 3 ciclos diários.
+- Automação por horário com até 3 ciclos diários.
 
-Integração automática com Home Assistant via MQTT Discovery.
+- Integração automática com Home Assistant via MQTT Discovery.
 
-Interface web responsiva hospedada no próprio ESP8266.
+- Interface web responsiva hospedada no próprio ESP8266.
 
-Persistência local das configurações com LittleFS.
+- Persistência local das configurações com LittleFS.
 
-Sincronização de horário via NTP para execução precisa.
+- Sincronização de horário via NTP para execução precisa.
 
 O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (manual + automático + HA).
 
 
 
 ## 🎯 Objetivos do Projeto
-Independência de nuvem: operação sem dependência externa.
 
-Configuração via navegador simples e rápida.
+- Independência de nuvem: operação sem dependência externa.
 
-Persistência após reinicialização e proteção contra perda de energia.
+- Configuração via navegador simples e rápida.
 
-Integração com sistemas de automação (MQTT / Home Assistant).
+- Persistência após reinicialização e proteção contra perda de energia.
 
-Design modular para facilitar expansão futura.
+- Integração com sistemas de automação (MQTT / Home Assistant).
+
+- Design modular para facilitar expansão futura.
 
 
 
 ## 🧠 Arquitetura do Sistema
-Fluxo principal
+
+- Fluxo principal
+
 Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
 
-Modo com Home Assistant
+- Modo com Home Assistant
+
 Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
 
 
 
 ## 🔌 Hardware Utilizado
+
 ESP8266 (NodeMCU / Wemos)
 
 Módulo Relé 2 canais (protocolo serial 0xA0)
