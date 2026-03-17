@@ -40,11 +40,11 @@ O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (man
 
 ## 🧠 Arquitetura do Sistema
 
-Fluxo principal:
+### Fluxo principal:
 
 - Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica embarcada → Relés → Válvulas
 
-Modo com Home Assistant:
+### Modo com Home Assistant:
 
 - Home Assistant → MQTT Broker → ESP8266 → Placa de Relés (serial) → Válvulas
 
