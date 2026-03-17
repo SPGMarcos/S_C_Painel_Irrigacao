@@ -1,244 +1,140 @@
-# 🌱 Smart Irrigation Panel
+🌱 Painel de Irrigação Inteligente
+Um controlador de irrigação local-first desenvolvido com ESP8266, pensado para continuar funcionando mesmo sem internet ou servidor MQTT.
 
-A local-first irrigation controller built with ESP8266, designed to keep working even without internet or MQTT.
+📸 Montagem de Hardware
+Painel principal
 
----
+Módulo relé de 2 canais
 
-## 📸 Hardware Setup
-  
-![Panel](images/hardware.jpg)
+Válvulas solenóides 127V/220V
 
----
+Fonte de 5V
 
-## 🎯 Why I built this
+🎯 Motivação
+Eu precisava de um sistema de irrigação confiável, que não dependesse da nuvem e não parasse de funcionar caso a conexão caísse.
+A maioria das soluções disponíveis depende fortemente de serviços externos, então criei este projeto para rodar 100% localmente, com MQTT e Home Assistant como camadas opcionais.
 
-I needed a reliable irrigation system that wouldn't depend on cloud services or stop working if the connection failed.
+🔧 O que ele faz
+Controla 2 válvulas solenóides independentes
 
-Most solutions rely heavily on external systems, so I designed this to run fully locally, with MQTT and Home Assistant as optional layers.
+Executa até 3 ciclos de irrigação por dia
 
----
+Funciona totalmente offline (sem nuvem)
 
-## 🔧 What it does
+Integração opcional com MQTT/Home Assistant
 
-- Controls 2 independent solenoid valves  
-- Runs up to 3 scheduled irrigation cycles per day  
-- Works fully offline (no cloud required)  
-- Optional MQTT integration with Home Assistant  
-- Web interface for configuration and control  
-- Stores all settings locally (survives reboot and power loss)  
+Interface web para configuração e controle
 
----
+Armazena todas as configurações localmente (mesmo após reinício ou queda de energia)
 
-## 🔄 How it works
+🔄 Como funciona
+O usuário define os horários pela interface web
 
-- The user sets schedules using the web interface  
-- Configuration is stored in LittleFS  
-- Time is synchronized using NTP  
-- Every minute, the system checks if a cycle should start  
-- Relays are triggered with a small delay to protect the hardware  
+Configurações são salvas no LittleFS
 
-Basic logic used:
+O horário é sincronizado via NTP
 
-```cpp
+A cada minuto, o sistema verifica se deve iniciar um ciclo
 
-🧠 System Architecture
-Local mode
+Os relés são acionados com um pequeno atraso para proteger o hardware
 
-User
-↓
-Web Interface (ESP8266)
-↓
-Internal HTTP Server
-↓
-Control Logic
-↓
-Relays → Valves
+🧠 Arquitetura do Sistema
+Modo Local  
+Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica de controle → Relés → Válvulas
 
-With Home Assistant
+Com Home Assistant  
+Home Assistant → Broker MQTT → ESP8266 → Módulo Relé → Válvulas
 
-Home Assistant
-↓
-MQTT Broker
-↓
-ESP8266
-↓
-Relay Module (Serial)
-↓
-Valves
+⚙️ Principais Recursos
+Controle manual e independente das válvulas
 
-⚙️ Key Features
-Manual control
+Atualizações em tempo real
 
-Independent valve control
+Sincronização de estado via MQTT
 
-Real-time updates
+Automação programada (até 3 ciclos diários)
 
-MQTT state sync
+Comparação minuto a minuto (sem agendador externo)
 
-Scheduled automation
+Ambas válvulas podem funcionar juntas
 
-Up to 3 daily cycles
+Atraso de 1s entre ativações (proteção do hardware)
 
-Minute-based comparison (no external scheduler)
+Sincronização de horário via pool.ntp.org (atualização a cada 60s, fuso configurado para Brasil)
 
-Both valves can run together
+Persistência local com LittleFS
 
-1s delay between activations (hardware protection)
+Provisionamento de Wi-Fi via WiFiManager (sem credenciais fixas)
 
-Time sync
+📡 Integração com Home Assistant
+Descoberta automática via MQTT
 
-Uses pool.ntp.org
+Criação de entidades para cada válvula
 
-Updates every 60 seconds
-
-Configured timezone (Brazil)
-
-Persistence
-
-Uses LittleFS (/config.txt)
-
-Stores schedules, states and MQTT config
-
-Recovers automatically after reboot
-
-WiFi provisioning
-
-Uses WiFiManager
-
-Creates ESP_Irrigacao AP if no Wi-Fi is saved
-
-No hardcoded credentials needed
-
-📡 Home Assistant Integration
-
-Uses MQTT Discovery to automatically create entities:
-
-Valve 1
-
-Valve 2
-
-Topics:
+Tópicos:
 
 irrigacao_esp/v1/state
+
 irrigacao_esp/v1/set
+
 irrigacao_esp/v2/state
+
 irrigacao_esp/v2/set
 
-Auto discovery:
+🌐 Interface Web
+Interface responsiva com tema escuro, incluindo:
 
-homeassistant/switch/irrigacao_esp_v1/config
-homeassistant/switch/irrigacao_esp_v2/config
+Botões de controle
 
-This allows:
+Configuração de horários
 
-Auto detection in Home Assistant
+Controle de ciclos
 
-State synchronization
+Atualização automática (a cada 5s)
 
-Bidirectional control
+Configurações avançadas
 
-🌐 Web Interface
+Reset de fábrica
 
-Dark-themed responsive interface with:
+Tecnologias usadas: HTML5, CSS, JavaScript (Fetch API), JSON, PROGMEM
 
-Toggle switches
+🛡️ Confiabilidade
+Atraso entre ativações para evitar sobrecarga
 
-Schedule configuration
+Controle interno de estado (isIrrigating)
 
-Cycle control
+Reconexão automática do MQTT
 
-Auto refresh (5s)
+Persistência local segura contra perda de energia
 
-Advanced settings
+Reset de fábrica via interface web
 
-Factory reset
+⚠️ Limitações
+Ainda sem sensores de umidade (baseado apenas em tempo)
 
-Built using:
+Recursos MQTT exigem Wi-Fi
 
-HTML5
+Sem acesso remoto sem configuração externa
 
-CSS
+🌍 Casos de Uso
+Jardins residenciais
 
-JavaScript (Fetch API)
+Pequenas propriedades rurais
 
-JSON
+Estufas
 
-PROGMEM (RAM optimization)
+📈 Melhorias Futuras
+Sensores de umidade do solo
 
-🔌 Hardware
+Agendamento individual por válvula
 
-ESP8266
+Controle remoto via LoRa
 
-2-channel relay module (serial protocol 0xA0)
+Automação baseada em clima
 
-5V power supply
+Dashboard avançado
 
-127V/220V solenoid valves
-
-🔄 Relay Communication
-
-Serial protocol:
-
-[A0][Relay][State][Checksum]
-
-Example:
-
-byte cmd[4] = {0xA0, relay, state, checksum};
-🛡️ Reliability Features
-
-Delay between valve activation
-
-Internal state control (isIrrigating)
-
-Automatic MQTT reconnection
-
-Local persistence (power loss safe)
-
-Web-based factory reset
-
-⚙️ Design Decisions
-
-ESP8266 for low cost and Wi-Fi capability
-
-Local-first architecture (no cloud dependency)
-
-MQTT is optional, not required
-
-LittleFS instead of EEPROM for flexibility
-
-Serial relay module to simplify wiring
-
-⚠️ Limitations
-
-No sensor feedback yet (time-based irrigation only)
-
-Requires Wi-Fi for MQTT features
-
-No remote access without external setup
-
-🌍 Real Use Cases
-
-Home gardens
-
-Small farms
-
-Greenhouses
-
-📈 Future Improvements
-
-Soil moisture sensors
-
-Individual valve scheduling
-
-LoRa remote control
-
-Weather-based automation
-
-Advanced dashboard
-
-👨‍💻 Author
-
-Marcos Gabriel Ferreira Miranda
-IoT Developer | Residential and Agricultural Automation
+👨‍💻 Autor
+Marcos Gabriel Ferreira Miranda  
+Desenvolvedor IoT | Automação Residencial e Agrícola
 Belo Horizonte - MG
-int cur = timeClient.getHours() * 60 + timeClient.getMinutes();
