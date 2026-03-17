@@ -46,7 +46,7 @@ Safe against power loss
 
 Modular and scalable
 
-🧠 System Architecture
+System Architecture
 User
   ↓
 Web Interface (ESP8266)
