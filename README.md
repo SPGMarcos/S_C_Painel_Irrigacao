@@ -171,7 +171,7 @@ Código modular e fácil de manter.
 
 
 
-##👨‍💻 Autor
+## 👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda  
 
 IoT Developer | Automação Residencial e Agrícola
