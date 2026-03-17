@@ -1,4 +1,4 @@
-🌱 Painel de Irrigação Inteligente
+##🌱 Painel de Irrigação Inteligente
 Um controlador de irrigação local-first desenvolvido com ESP8266, pensado para continuar funcionando mesmo sem internet ou servidor MQTT.
 
 📸 Montagem de Hardware
@@ -10,11 +10,11 @@ Válvulas solenóides 127V/220V
 
 Fonte de 5V
 
-🎯 Motivação
+##🎯 Motivação
 Eu precisava de um sistema de irrigação confiável, que não dependesse da nuvem e não parasse de funcionar caso a conexão caísse.
 A maioria das soluções disponíveis depende fortemente de serviços externos, então criei este projeto para rodar 100% localmente, com MQTT e Home Assistant como camadas opcionais.
 
-🔧 O que ele faz
+##🔧 O que ele faz
 Controla 2 válvulas solenóides independentes
 
 Executa até 3 ciclos de irrigação por dia
@@ -27,7 +27,7 @@ Interface web para configuração e controle
 
 Armazena todas as configurações localmente (mesmo após reinício ou queda de energia)
 
-🔄 Como funciona
+##🔄 Como funciona
 O usuário define os horários pela interface web
 
 Configurações são salvas no LittleFS
@@ -38,14 +38,14 @@ A cada minuto, o sistema verifica se deve iniciar um ciclo
 
 Os relés são acionados com um pequeno atraso para proteger o hardware
 
-🧠 Arquitetura do Sistema
+##🧠 Arquitetura do Sistema
 Modo Local  
 Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica de controle → Relés → Válvulas
 
 Com Home Assistant  
 Home Assistant → Broker MQTT → ESP8266 → Módulo Relé → Válvulas
 
-⚙️ Principais Recursos
+##⚙️ Principais Recursos
 Controle manual e independente das válvulas
 
 Atualizações em tempo real
@@ -66,7 +66,7 @@ Persistência local com LittleFS
 
 Provisionamento de Wi-Fi via WiFiManager (sem credenciais fixas)
 
-📡 Integração com Home Assistant
+##📡 Integração com Home Assistant
 Descoberta automática via MQTT
 
 Criação de entidades para cada válvula
@@ -81,7 +81,7 @@ irrigacao_esp/v2/state
 
 irrigacao_esp/v2/set
 
-🌐 Interface Web
+##🌐 Interface Web
 Interface responsiva com tema escuro, incluindo:
 
 Botões de controle
@@ -98,7 +98,7 @@ Reset de fábrica
 
 Tecnologias usadas: HTML5, CSS, JavaScript (Fetch API), JSON, PROGMEM
 
-🛡️ Confiabilidade
+##🛡️ Confiabilidade
 Atraso entre ativações para evitar sobrecarga
 
 Controle interno de estado (isIrrigating)
@@ -109,21 +109,21 @@ Persistência local segura contra perda de energia
 
 Reset de fábrica via interface web
 
-⚠️ Limitações
+##⚠️ Limitações
 Ainda sem sensores de umidade (baseado apenas em tempo)
 
 Recursos MQTT exigem Wi-Fi
 
 Sem acesso remoto sem configuração externa
 
-🌍 Casos de Uso
+##🌍 Casos de Uso
 Jardins residenciais
 
 Pequenas propriedades rurais
 
 Estufas
 
-📈 Melhorias Futuras
+##📈 Melhorias Futuras
 Sensores de umidade do solo
 
 Agendamento individual por válvula
@@ -134,7 +134,7 @@ Automação baseada em clima
 
 Dashboard avançado
 
-👨‍💻 Autor
+##👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda  
 Desenvolvedor IoT | Automação Residencial e Agrícola
 Belo Horizonte - MG
