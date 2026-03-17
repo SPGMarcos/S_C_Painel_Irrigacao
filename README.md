@@ -1,72 +1,57 @@
-##🌱 Painel de Irrigação Inteligente
+🌱 Painel de Irrigação Inteligente
 Um controlador de irrigação local-first desenvolvido com ESP8266, pensado para continuar funcionando mesmo sem internet ou servidor MQTT.
 
-📸 Montagem de Hardware
-Painel principal
+📸 Hardware
+ESP8266
 
-Módulo relé de 2 canais
-
-Válvulas solenóides 127V/220V
+Módulo relé de 2 canais (protocolo serial 0xA0)
 
 Fonte de 5V
 
-##🎯 Motivação
-Eu precisava de um sistema de irrigação confiável, que não dependesse da nuvem e não parasse de funcionar caso a conexão caísse.
-A maioria das soluções disponíveis depende fortemente de serviços externos, então criei este projeto para rodar 100% localmente, com MQTT e Home Assistant como camadas opcionais.
+Válvulas solenóides 127V/220V
 
-##🔧 O que ele faz
-Controla 2 válvulas solenóides independentes
+🎯 Motivação
+A maioria dos sistemas de irrigação depende de serviços externos e para de funcionar se a conexão cai.
+Este projeto foi criado para rodar 100% localmente, com integração opcional via MQTT e Home Assistant.
 
-Executa até 3 ciclos de irrigação por dia
+🔧 Funcionalidades
+Controle de 2 válvulas independentes
 
-Funciona totalmente offline (sem nuvem)
+Até 3 ciclos de irrigação por dia
+
+Funciona totalmente offline
+
+Interface web responsiva (tema escuro)
 
 Integração opcional com MQTT/Home Assistant
 
-Interface web para configuração e controle
+Configurações persistentes via LittleFS
 
-Armazena todas as configurações localmente (mesmo após reinício ou queda de energia)
+Provisionamento de Wi-Fi com WiFiManager
 
-##🔄 Como funciona
-O usuário define os horários pela interface web
-
-Configurações são salvas no LittleFS
-
-O horário é sincronizado via NTP
-
-A cada minuto, o sistema verifica se deve iniciar um ciclo
-
-Os relés são acionados com um pequeno atraso para proteger o hardware
-
-##🧠 Arquitetura do Sistema
+🧠 Arquitetura
 Modo Local  
 Usuário → Interface Web (ESP8266) → Servidor HTTP interno → Lógica de controle → Relés → Válvulas
 
 Com Home Assistant  
 Home Assistant → Broker MQTT → ESP8266 → Módulo Relé → Válvulas
 
-##⚙️ Principais Recursos
-Controle manual e independente das válvulas
+🌐 Interface Web
+Botões de controle
 
-Atualizações em tempo real
+Configuração de horários
 
-Sincronização de estado via MQTT
+Controle de ciclos
 
-Automação programada (até 3 ciclos diários)
+Atualização automática (5s)
 
-Comparação minuto a minuto (sem agendador externo)
+Configurações avançadas
 
-Ambas válvulas podem funcionar juntas
+Reset de fábrica
 
-Atraso de 1s entre ativações (proteção do hardware)
+Tecnologias: HTML5, CSS, JavaScript (Fetch API), JSON, PROGMEM
 
-Sincronização de horário via pool.ntp.org (atualização a cada 60s, fuso configurado para Brasil)
-
-Persistência local com LittleFS
-
-Provisionamento de Wi-Fi via WiFiManager (sem credenciais fixas)
-
-##📡 Integração com Home Assistant
+📡 Integração com Home Assistant
 Descoberta automática via MQTT
 
 Criação de entidades para cada válvula
@@ -81,49 +66,34 @@ irrigacao_esp/v2/state
 
 irrigacao_esp/v2/set
 
-##🌐 Interface Web
-Interface responsiva com tema escuro, incluindo:
+⚙️ Instalação
+Clone este repositório:
 
-Botões de controle
+bash
+git clone https://github.com/seuusuario/smart-irrigation-panel.git
+Abra no Arduino IDE ou PlatformIO
 
-Configuração de horários
+Configure suas credenciais de Wi-Fi (ou use o AP gerado automaticamente)
 
-Controle de ciclos
+Faça o upload para o ESP8266
 
-Atualização automática (a cada 5s)
+🚀 Uso
+Acesse a interface web pelo IP do ESP8266
 
-Configurações avançadas
+Configure os ciclos de irrigação
 
-Reset de fábrica
+Controle manual das válvulas
 
-Tecnologias usadas: HTML5, CSS, JavaScript (Fetch API), JSON, PROGMEM
+Integração opcional com Home Assistant via MQTT
 
-##🛡️ Confiabilidade
-Atraso entre ativações para evitar sobrecarga
+⚠️ Limitações
+Sem sensores de umidade (irrigação baseada apenas em tempo)
 
-Controle interno de estado (isIrrigating)
-
-Reconexão automática do MQTT
-
-Persistência local segura contra perda de energia
-
-Reset de fábrica via interface web
-
-##⚠️ Limitações
-Ainda sem sensores de umidade (baseado apenas em tempo)
-
-Recursos MQTT exigem Wi-Fi
+Requer Wi-Fi para recursos MQTT
 
 Sem acesso remoto sem configuração externa
 
-##🌍 Casos de Uso
-Jardins residenciais
-
-Pequenas propriedades rurais
-
-Estufas
-
-##📈 Melhorias Futuras
+📈 Melhorias Futuras
 Sensores de umidade do solo
 
 Agendamento individual por válvula
@@ -134,7 +104,7 @@ Automação baseada em clima
 
 Dashboard avançado
 
-##👨‍💻 Autor
+👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda  
 Desenvolvedor IoT | Automação Residencial e Agrícola
 Belo Horizonte - MG
