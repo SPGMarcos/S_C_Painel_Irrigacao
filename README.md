@@ -2,6 +2,8 @@
 ESP8266 + MQTT + Home Assistant + Web Interface
 Painel inteligente para controle de 2 válvulas solenóide com automação por horário e integração nativa com Home Assistant.
 
+
+
 ## 📌 Overview
 Este projeto consiste em um painel de irrigação inteligente baseado em ESP8266, capaz de:
 Controlar 2 válvulas solenóide independentes
@@ -33,10 +35,6 @@ Integrado ao Home Assistant
 
 
 Em modo híbrido (manual + automático + HA)
-
-
-
-
 
 
 
@@ -81,7 +79,6 @@ Home Assistant
   Relé Board Serial
       ↓
  Válvulas Solenóide
-
 
 
 
@@ -176,9 +173,6 @@ Portal de configuração intuitivo
 Elimina necessidade de hardcoding de rede.
 
 
-
-
-
 🔹 6. Integração com Home Assistant (MQTT Discovery)
 O sistema cria automaticamente 2 entidades:
 Válvula 1
@@ -222,7 +216,6 @@ Página de configurações avançadas
 Factory reset
 
 
-
 Tecnologias usadas:
 HTML5
 
@@ -250,6 +243,8 @@ Exemplo:
 byte cmd[4] = {0xA0, relay, state, checksum};
 Garante integridade simples da mensagem.
 
+
+
 ## 🛡️ Mecanismos de Segurança e Estabilidade
 Delay entre acionamento das válvulas
 
@@ -274,6 +269,9 @@ Watchdog natural do loop
 Permite acesso via:
 http://esp_irrigacao.local
 Sem necessidade de IP fixo.
+
+
+
 ## 📈 Escalabilidade
 O sistema foi desenvolvido para permitir expansão futura:
 Controle individual por ciclo
@@ -294,6 +292,7 @@ Integração com clima
 Controle por estação do ano
 
 
+
 ## 📊 Diferenciais Técnicos
 ✔ Integração MQTT automática
  ✔ Arquitetura híbrida (local + HA)
@@ -303,8 +302,12 @@ Controle por estação do ano
  ✔ Provisionamento inteligente
  ✔ Código modular
 
+
+
 ## 👨‍💻 Autor
 Marcos Gabriel Ferreira Miranda
- IoT Developer | Automação Residencial e Agrícola
- Belo Horizonte - MG
+
+IoT Developer | Automação Residencial e Agrícola
+
+Belo Horizonte - MG
 
