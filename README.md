@@ -264,5 +264,7 @@ Seasonal control
 👨‍💻 Author
 
 Marcos Gabriel Ferreira Miranda
+
 IoT Developer | Residential and Agricultural Automation
+
 Belo Horizonte - MG
