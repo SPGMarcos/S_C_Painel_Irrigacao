@@ -153,7 +153,27 @@ Checksum básico para integridade e reenvio em caso de falha.
 
 ## 📷 Mídia do Projeto
 
-![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/0cebc6eb-2509-40f8-9c98-065a835b935a) ![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/15f8f8d3-636f-43cc-8bbd-78decb63048e) ![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/1e51f015-e948-4ee8-9f67-abcb40350044)
+<div align="center">
+  <table border="0">
+    <tr>
+      <td align="center">
+        <img src="![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/e8c30276-3d20-4899-bf72-6ce087bf9faa)
+" width="250px"><br>
+        <sub><b>Gráfico BST (3.1.3)</b></sub>
+      </td>
+      <td align="center">
+        <img src="![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/a697d877-c362-438a-ad85-7130e9e37924)
+" width="250px"><br>
+        <sub><b>Gráfico AVL (3.2.3)</b></sub>
+      </td>
+      <td align="center">
+        <img src="![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/35abf8b9-10f2-4818-8451-1ac301166621)
+" width="250px"><br>
+        <sub><b>Tabela Geral (3.1.4/3.2.4)</b></sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 
 
