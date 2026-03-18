@@ -151,30 +151,6 @@ Checksum básico para integridade e reenvio em caso de falha.
 - Factory reset via interface para recuperação rápida.
 
 
-## 📷 Mídia do Projeto
-
-<div align="center">
-  <table border="0">
-    <tr>
-      <td align="center">
-        <img src="![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/e8c30276-3d20-4899-bf72-6ce087bf9faa)
-" width="250px"><br>
-        <sub><b>Gráfico BST (3.1.3)</b></sub>
-      </td>
-      <td align="center">
-        <img src="![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/a697d877-c362-438a-ad85-7130e9e37924)
-" width="250px"><br>
-        <sub><b>Gráfico AVL (3.2.3)</b></sub>
-      </td>
-      <td align="center">
-        <img src="![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/35abf8b9-10f2-4818-8451-1ac301166621)
-" width="250px"><br>
-        <sub><b>Tabela Geral (3.1.4/3.2.4)</b></sub>
-      </td>
-    </tr>
-  </table>
-</div>
-
 
 
 
