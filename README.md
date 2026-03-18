@@ -65,7 +65,9 @@ O sistema opera localmente, integrado ao Home Assistant ou em modo híbrido (man
 
 - Painel físico para montagem e proteção elétrica
 
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/e489f439-a8f1-495e-984f-484ace3c447b" width="400" alt="Dashboard de Irrigação">
+</div>
 
 ## ⚙️ Principais Funcionalidades
 
