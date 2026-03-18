@@ -153,16 +153,10 @@ Checksum básico para integridade e reenvio em caso de falha.
 
 ## 📷 Mídia do Projeto
 
-<table border="0" align="center">
-  <tr>
-    <td><img src="![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/7abbd8b1-3e40-4308-927b-ebbecd8726c1)
-" width="300" alt="Gráfico BST"></td>
-    <td><img src="![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/513de6ff-02e3-4c3f-b636-ffe4ef51bde5)
-" width="300" alt="Gráfico AVL"></td>
-    <td><img src="![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/12b8bd7e-61d8-4e31-8dda-01cd9c8c0149)
-" width="300" alt="Tabela de Resultados"></td>
-  </tr>
-</table>
+![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/0cebc6eb-2509-40f8-9c98-065a835b935a) ![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/15f8f8d3-636f-43cc-8bbd-78decb63048e) ![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/1e51f015-e948-4ee8-9f67-abcb40350044)
+
+
+
 
 ## 📡 mDNS
 
