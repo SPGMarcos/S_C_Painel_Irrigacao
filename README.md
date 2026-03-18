@@ -3,8 +3,9 @@
 ESP8266 + MQTT + Home Assistant + Interface Web
 Painel compacto para controle de 2 válvulas solenóide, com automação por horário, operação 100% local e integração nativa com Home Assistant via MQTT Discovery.
 
-
-
+<p align="center">
+![Dashboard-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e1964601-f601-4d69-b3ad-c2f85e37c67c)
+</p>
 
 
 ## 📌 Visão Geral
