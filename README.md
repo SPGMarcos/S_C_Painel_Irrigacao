@@ -152,15 +152,14 @@ Checksum básico para integridade e reenvio em caso de falha.
 
 
 ## 📷 Mídia do Projeto
-<div style="display: flex; justify-content: center; gap: 10px;">
-  <img src="![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/ae3c69bc-e629-4419-b21d-9a63723bdef6)" width="32%">
-  <img src="![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/88544ca9-8c0f-4fdc-a77b-90a973249fcd)" width="32%">
-  <img src="![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/87db4eda-6d8b-4d57-9d4e-b580d0ff0935)" width="32%">
-</div>
 
-
-
-
+<table border="0" align="center">
+  <tr>
+    <td><img src="![WhatsApp Image 2026-02-19 at 00 43 52](https://github.com/user-attachments/assets/ae3c69bc-e629-4419-b21d-9a63723bdef6)" width="300" alt="Gráfico BST"></td>
+    <td><img src="![WhatsApp Image 2026-02-19 at 00 44 30](https://github.com/user-attachments/assets/88544ca9-8c0f-4fdc-a77b-90a973249fcd)" width="300" alt="Gráfico AVL"></td>
+    <td><img src="![WhatsApp Image 2026-02-19 at 00 45 17](https://github.com/user-attachments/assets/87db4eda-6d8b-4d57-9d4e-b580d0ff0935)" width="300" alt="Tabela de Resultados"></td>
+  </tr>
+</table>
 
 ## 📡 mDNS
 
