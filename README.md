@@ -151,6 +151,9 @@ Checksum básico para integridade e reenvio em caso de falha.
 - Factory reset via interface para recuperação rápida.
 
 
+## 📷 Mídia do Projeto
+
+
 
 ## 📡 mDNS
 
